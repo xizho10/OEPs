@@ -18,11 +18,11 @@ dAPI currently only supports chrome extension, which cannot be used on the mobil
 
 API for App wake up and QR code scan in Mobile
 
-====sigdata====
+====signdata====
 <pre>
 {
     "id":"t",
-    "method":"sigdata",
+    "method":"signdata",
     "appName":"",
     "params":{
         "rawData":"48656C6C6F20776F726C64" //Hello world
@@ -35,7 +35,7 @@ response:
 </pre>
 {
     "id": "1",
-    "method": "sigdata",
+    "method": "signdata",
     "errorcode": 0,
     "desc":"SUCCESS",
     "result": {
