@@ -14,18 +14,51 @@ The OEP-11 Proposal is a standard interface like dAPI in Mobile. Support dApp wa
 dAPI currently only supports chrome extension, which cannot be used on the mobile side, Unable to meet a large number of mobile DAPP.
 
 ==Specification==
+
+
 === Mobile API ===
+
+/api/v1/signeddata/{dappid}/{msg}
+
+/api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
+
+
+=== Server API ===
+
+
+
+
+* for dapp:
+/api/v1/upload/{dappid}/getsigneddata
+/api/v1/query/transactionhistory//{dappid}/{pagesize}/{page}
+
+* for wallet:
+/api/v1/signeddata/{dappid}/{msg}
+/api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
+
+* other:
+/api/v1/upload/{dappid}/template
+/api/v1/query/template/{dappid}/{templateid}
+/api/v1/query/templates/{dappid}/{pagesize}/{page}
+
+
 
 API for App wake up and QR code scan in Mobile
 
-====signdata====
+====postsigneddata====
+
+/api/v1/signeddata/{dappid}/{msg}
+
 <pre>
 {
     "id":"t",
-    "method":"signdata",
+    "method":"postsigneddata",
     "appName":"",
     "params":{
-        "rawData":"48656C6C6F20776F726C64" //Hello world
+        "rawData":"48656C6C6F20776F726C64", //Hello world
+        "address":"",
+        "publickey":"",
+        "signedData": "cab96ef92419df915902817b2c9ed3f6c1c4956b3115737f7c787b03eed3f49e56547f3117867db64217b84cd6c6541d7b248f23ceeef3266a9a0bd6497260cb"
     }
 }
 </pre>
@@ -39,17 +72,16 @@ response:
     "errorcode": 0,
     "desc":"SUCCESS",
     "result": {
-        "signedData": "cab96ef92419df915902817b2c9ed3f6c1c4956b3115737f7c787b03eed3f49e56547f3117867db64217b84cd6c6541d7b248f23ceeef3266a9a0bd6497260cb"
     }
  }
 </pre>
 
 
-====invoke smart contract====
+====post invoke smart contract template====
 <pre>
 {
   "id": "sdggsg",
-  "method": "invokesmartcontract",
+  "method": "invokeSmartcontractTemplate",
   "appName":"",
   "params": {
     "contranHash":"",
@@ -105,16 +137,16 @@ response:
     "errorcode": 0,
     "desc":"SUCCESS",
     "result": {
-        "txHash": ""
+        "templateid": ""
     }
  }
 </pre>
 
-====transfer====
+====postTransferTemplate====
 <pre>
 {
     "id":"t",
-    "method":"transfer",
+    "method":"postTransferTemplate",
     "appName":"",
     "params":{
     	"gas_price":0,
@@ -147,105 +179,6 @@ response:
 
 
 
-
-
-
-
-===Server API===
-
-
-====post scan request====
-<pre>
-{
-    "id":"t",
-    "method":"postScanRequest",
-    "params":{
-        "data": "",
-    }
-}
-</pre>
-
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| data  | String |           | Required |
-| time  | String |           | Required |
-
-
-====post Signed====
-<pre>
-{
-    "id":"t",
-    "method":"postSigned",
-    "params":{
-        "appName":"vgame"
-        "signedData": "cab96ef92419df915902817b2c9ed3f6c1c4956b3115737f7c787b03eed3f49e56547f3117867db64217b84cd6c6541d7b248f23ceeef3266a9a0bd6497260cb",
-        "address":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-        "time": "20181204141130"
-        "publickey":""
-    }
-}
-</pre>
-
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| signedData  | String |           | Required |
-| address  | String |           | Required |
-| publickey  | String |           | Required |
-| time  | String |           | Required |
-
-====post Invoke smartcontract Tx====
-
-<pre>
-{
-    "id":"t",
-    "method":"postInvokeSmartcontractTx",
-    "params":{
-        "appName":"vgame"
-        "params": "",
-        "address":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-        "time": "20181204141130"
-    }
-}
-</pre>
-
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| params  | String |           | Required |
-| address  | String |           | Required |
-| time  | String |           | Required |
-
-====post Transfer Tx====
-
-<pre>
-{
-    "id":"t",
-    "method":"postTransferTx",
-    "params":{
-        "appName":"vgame"
-        "params": "",
-        "address":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-        "time": "20181204141130"
-    }
-}
-</pre>
-
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| params  | String |           | Required |
-| address  | String |           | Required |
-| time  | String |           | Required |
 
 ====query Sign====
 <pre>
@@ -333,6 +266,55 @@ response:
     }
  }
 </pre>
+
+
+
+
+
+===DB in Server===
+
+
+| Parameter   | Type  | description |          instruction |
+| ------- | ------ | ------------- | ----------- |
+| id  | String |           | Required |
+| appName  | String |           | Required |
+| data  | String |           | Required |
+| time  | String |           | Required |
+
+
+
+
+| Parameter   | Type  | description |          instruction |
+| ------- | ------ | ------------- | ----------- |
+| id  | String |           | Required |
+| appName  | String |           | Required |
+| signedData  | String |           | Required |
+| address  | String |           | Required |
+| publickey  | String |           | Required |
+| time  | String |           | Required |
+
+
+
+| Parameter   | Type  | description |          instruction |
+| ------- | ------ | ------------- | ----------- |
+| id  | String |           | Required |
+| appName  | String |           | Required |
+| params  | String |           | Required |
+| address  | String |           | Required |
+| time  | String |           | Required |
+
+
+
+
+| Parameter   | Type  | description |          instruction |
+| ------- | ------ | ------------- | ----------- |
+| id  | String |           | Required |
+| appName  | String |           | Required |
+| params  | String |           | Required |
+| address  | String |           | Required |
+| time  | String |           | Required |
+
+
 
 
 ===Error code===
