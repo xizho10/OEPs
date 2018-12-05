@@ -16,7 +16,8 @@ dAPI currently only supports chrome extension, which cannot be used on the mobil
 ==Specification==
 
 
-=== Mobile API ===
+=== dApp front end===
+API for App wake up and QR code scan in Mobile
 
 ====request signdata====
 /api/v1/request/signdata/{dappid}/{msg}
@@ -28,27 +29,39 @@ dAPI currently only supports chrome extension, which cannot be used on the mobil
 /api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
 
 
+=== dApp backend ===
+
+====registry dApp====
+/api/v1/registry
+
+====upload template====
+/api/v1/upload/{dappid}/template
+
 === Server API ===
 
 
 
 
-* for dapp:
+====for dapp front end====
 /api/v1/upload/{dappid}/getsigneddata
 /api/v1/query/transactionhistory//{dappid}/{pagesize}/{page}
 
-* for wallet:
-/api/v1/signeddata/{dappid}/{msg}
-/api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
-
-* other:
+====for dapp back end====
+/api/v1/registry
 /api/v1/upload/{dappid}/template
+
+====for wallet====
+POST /api/v1/post/signeddata/{dappid}
+/api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
+POST /api/v1/send/transaction
+
+====query====
 /api/v1/query/template/{dappid}/{templateid}
 /api/v1/query/templates/{dappid}/{pagesize}/{page}
+/api/v1/query/transferhistory/{dappid}/{pagesize}/{page}
+/api/v1/query/invokehistory/{dappid}/{pagesize}/{page}
 
-
-
-API for App wake up and QR code scan in Mobile
+====example====
 
 ====post signeddata====
 
@@ -214,33 +227,6 @@ response:
  }
 </pre>
 
-====query transfer history====
-
-
-http://127.0.0.1:80/api/v1/transfer/history/{pagesize}/{page}
-
-response:
-
-</pre>
-{
-    "id": "1",
-    "method": "queryTransferHistory",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-        [
-            {
-                "id": "",
-                "data": "",
-                "state": "sended",   // or not send
-                "time": "20181204141130"
-                "hash": ""
-             }
-        ]
-
-    }
- }
-</pre>
 
 
 
@@ -272,6 +258,35 @@ response:
  }
 </pre>
 
+
+
+====query transfer history====
+
+
+http://127.0.0.1:80/api/v1/transfer/history/{pagesize}/{page}
+
+response:
+
+</pre>
+{
+    "id": "1",
+    "method": "queryTransferHistory",
+    "errorcode": 0,
+    "desc":"SUCCESS",
+    "result": {
+        [
+            {
+                "id": "",
+                "data": "",
+                "state": "sended",   // or not send
+                "time": "20181204141130"
+                "hash": ""
+             }
+        ]
+
+    }
+ }
+</pre>
 
 
 
