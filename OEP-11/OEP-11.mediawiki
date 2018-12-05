@@ -61,7 +61,6 @@ POST /api/v1/send/transaction
 /api/v1/query/transferhistory/{dappid}/{pagesize}/{page}
 /api/v1/query/invokehistory/{dappid}/{pagesize}/{page}
 
-====example====
 
 ====post signeddata====
 
