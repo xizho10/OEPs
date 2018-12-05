@@ -364,9 +364,9 @@ response:
 
 
 
-{| border="1" style="border-collapse:collapse"
+{| border="0" style="border-collapse:collapse"
 | Code
- |  description
+|  description
 |-
 | 80001
 | params error
