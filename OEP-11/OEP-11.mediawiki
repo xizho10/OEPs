@@ -367,4 +367,5 @@ response:
 ![login](login.png)
 
 ![invoke](invoke.png)
-
+[[Image:login.png|login]]
+[[Image:invoke.png|invoke]]
