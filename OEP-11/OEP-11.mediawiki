@@ -50,7 +50,7 @@ dAPI currently only supports chrome extension, which cannot be used on the mobil
 
 API for App wake up and QR code scan in Mobile
 
-====postsigneddata====
+====post signeddata====
 
 /api/v1/signeddata/{dappid}/{msg}
 
@@ -185,7 +185,7 @@ response:
 
 
 
-====query Sign====
+====query sign====
 <pre>
 {
     "id":"t",
