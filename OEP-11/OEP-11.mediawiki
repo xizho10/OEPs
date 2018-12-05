@@ -342,21 +342,36 @@ response:
 
 ====transactions====
 
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| hash  | String |           | Required |
-| hexstring  | String |           | Required |
-| time  | String |           | Required |
+{| border="0" style="border-collapse:collapse"
+| Parameter   | Type  | description |          instruction |-
+| ------- | ------ | ------------- | ----------- |-
+| id  | String |           | Required |-
+| appName  | String |           | Required |-
+| hash  | String |           | Required |-
+| hexstring  | String |           | Required |-
+| time  | String |           | Required |-
+|}
 
-
-| Code   |  description |
-| ------- | ------ |
-| 0  | SUCCESS |
-| 80001  | params error |
-| 80002  | method error |
-| 80003  | internal error |
+{| border="0" style="border-collapse:collapse"
+| Parameter
+| Type
+| description
+| instruction
+|-
+| id
+| String
+|
+| Required
+|-
+| 80001
+| params error
+|-
+| 80002
+| method error
+|-
+| 80003
+| internal error
+|}
 
 ===Error code===
 
@@ -367,6 +382,9 @@ response:
 {| border="0" style="border-collapse:collapse"
 | Code
 |  description
+|-
+| 0
+| SUCCESS
 |-
 | 80001
 | params error
