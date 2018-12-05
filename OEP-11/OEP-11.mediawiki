@@ -342,15 +342,15 @@ response:
 
 ====transactions====
 
-{| border="0" style="border-collapse:collapse"
-| Parameter   | Type  | description |          instruction |-
-| ------- | ------ | ------------- | ----------- |-
-| id  | String |           | Required |-
-| appName  | String |           | Required |-
-| hash  | String |           | Required |-
-| hexstring  | String |           | Required |-
-| time  | String |           | Required |-
-|}
+
+| Parameter   | Type  | description |          instruction |
+| ------- | ------ | ------------- | ----------- |
+| id  | String |           | Required |
+| appName  | String |           | Required |
+| hash  | String |           | Required |
+| hexstring  | String |           | Required |
+| time  | String |           | Required |
+
 
 {| border="0" style="border-collapse:collapse"
 | Parameter
@@ -363,14 +363,25 @@ response:
 |
 | Required
 |-
-| 80001
-| params error
+| appName
+| String
+|
+| Required
 |-
-| 80002
-| method error
+| hash
+| String
+|
+| Required
 |-
-| 80003
-| internal error
+| hexstring
+| String
+|
+| Required
+|-
+| time
+| String
+|
+| Required
 |}
 
 ===Error code===
