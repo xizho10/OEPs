@@ -364,4 +364,7 @@ response:
 ==Implementation==
 ====Example implementations are available at====
 
+![login](login.png)
+
+![invoke](invoke.png)
 
