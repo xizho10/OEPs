@@ -18,8 +18,13 @@ dAPI currently only supports chrome extension, which cannot be used on the mobil
 
 === Mobile API ===
 
-/api/v1/signeddata/{dappid}/{msg}
+====request signdata====
+/api/v1/request/signdata/{dappid}/{msg}
 
+====get signeddata====
+/api/v1/getsigneddata/{dappid}/{msg}
+
+====request send transaction====
 /api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
 
 
@@ -142,7 +147,7 @@ response:
  }
 </pre>
 
-====postTransferTemplate====
+====post TransferTemplate====
 <pre>
 {
     "id":"t",
@@ -274,6 +279,8 @@ response:
 ===DB in Server===
 
 
+====dapp info====
+
 | Parameter   | Type  | description |          instruction |
 | ------- | ------ | ------------- | ----------- |
 | id  | String |           | Required |
@@ -283,6 +290,7 @@ response:
 
 
 
+====signed data====
 
 | Parameter   | Type  | description |          instruction |
 | ------- | ------ | ------------- | ----------- |
@@ -294,6 +302,20 @@ response:
 | time  | String |           | Required |
 
 
+====invoke smart contract====
+
+| Parameter   | Type  | description |          instruction |
+| ------- | ------ | ------------- | ----------- |
+| id  | String |           | Required |
+| appName  | String |           | Required |
+| method  | String |           | Required |
+| params  | String |           | Required |
+| address  | String |           | Required |
+| time  | String |           | Required |
+
+
+
+====tansfer====
 
 | Parameter   | Type  | description |          instruction |
 | ------- | ------ | ------------- | ----------- |
@@ -304,18 +326,15 @@ response:
 | time  | String |           | Required |
 
 
-
+====transactions====
 
 | Parameter   | Type  | description |          instruction |
 | ------- | ------ | ------------- | ----------- |
 | id  | String |           | Required |
 | appName  | String |           | Required |
-| params  | String |           | Required |
-| address  | String |           | Required |
+| hash  | String |           | Required |
+| hexstring  | String |           | Required |
 | time  | String |           | Required |
-
-
-
 
 ===Error code===
 
