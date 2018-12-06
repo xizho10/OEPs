@@ -17,10 +17,20 @@ dAPI currently only supports chrome extension and desktop, which cannot be used 
 
 API for App wake up and QR code scan in Mobile
 
-=== DApp ==
+=== DApp ===
 
 ==== DApp front end ====
 
+=====Wakeup Provider for login DApp =====
+
+1. wakeup Provider: send message for user signature
+
+<pre>
+{
+	"message": "HgigFdfwf",
+	"callback": "url"
+}
+</pre>
 
 =====Wakeup Provider for invoke smartcontract=====
 
@@ -32,45 +42,27 @@ API for App wake up and QR code scan in Mobile
 }
 </pre>
 
-=====Wakeup Provider for login dApp =====
 
-1. wakeup Provider: send message for user signature
-
-<pre>
-{
-	"message": "HgigFdfwf",
-	"callback": "url"
-}
-</pre>
 
 ==== DApp back end ====
 
+===== Login Api =====
+
 1. reveive signed message ,verify message, notify front end
+
+=====  Transaction signature=====
 
 2. signature transaction for front end
 
-3. synchronize transction events of Smartcontract
+===== Synchronize transction events =====
+
+synchronize transction events of Smartcontract
 
 
 
 === Provider ===
 
-
-====Scan transaction QrCode====
-
-1. scan transaction
-
-2. verify dApp owner signature
-
-3. add user signature
-
-4. send to blockchain
-
-<pre>
-{
-	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
-}
-</pre>
+Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 ====Scan message QrCode====
 
@@ -89,6 +81,24 @@ API for App wake up and QR code scan in Mobile
 	"callback": "url"
 }
 </pre>
+
+====Scan transaction QrCode====
+
+1. scan transaction
+
+2. verify dApp owner signature
+
+3. add user signature
+
+4. send to blockchain
+
+<pre>
+{
+	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
+}
+</pre>
+
+
 
 ==Implementation==
 Example implementations are available:
