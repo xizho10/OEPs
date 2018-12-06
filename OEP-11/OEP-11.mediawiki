@@ -22,6 +22,7 @@ API for App wake up and QR code scan in Mobile
 ====wakeup ONTO message====
 <pre>
 {
+	"network": 1,
 	"contractHash": "",
 	"type": "invoke or transfer",
 	"op": "methodname",
@@ -42,6 +43,7 @@ API for App wake up and QR code scan in Mobile
 ====scan message====
 <pre>
 {
+	"network": 1,
 	"contractHash": "",
 	"type": "invoke or transfer",
 	"op": "methodname",
