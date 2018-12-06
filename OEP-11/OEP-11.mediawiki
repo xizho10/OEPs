@@ -17,10 +17,12 @@ dAPI currently only supports chrome extension and desktop, which cannot be used 
 
 API for App wake up and QR code scan in Mobile
 
-=== dApp front end ===
+=== DApp ==
+
+==== DApp front end ====
 
 
-====wakeup Provider for invoke smartcontract====
+=====Wakeup Provider for invoke smartcontract=====
 
 1. wakeup Provider: send dApp owner signed transaction
 
@@ -30,7 +32,7 @@ API for App wake up and QR code scan in Mobile
 }
 </pre>
 
-====wakeup Provider for login dApp ====
+=====Wakeup Provider for login dApp =====
 
 1. wakeup Provider: send message for user signature
 
@@ -41,9 +43,9 @@ API for App wake up and QR code scan in Mobile
 }
 </pre>
 
-=== dApp back end ===
+==== DApp back end ====
 
-1. reveive signature message ,notify front end
+1. reveive signed message ,verify message, notify front end
 
 2. signature transaction for front end
 
@@ -54,7 +56,7 @@ API for App wake up and QR code scan in Mobile
 === Provider ===
 
 
-====scan transaction====
+====Scan transaction QrCode====
 
 1. scan transaction
 
@@ -70,11 +72,14 @@ API for App wake up and QR code scan in Mobile
 }
 </pre>
 
-====scan message====
+====Scan message QrCode====
 
 1. scan message
+
 2. verify dApp owner signature
+
 3. add user signature
+
 4. send to callback url
 
 
@@ -86,7 +91,7 @@ API for App wake up and QR code scan in Mobile
 </pre>
 
 ==Implementation==
-====Example implementations are available: ====
+Example implementations are available:
 
 
 
