@@ -48,11 +48,11 @@ API for App wake up and QR code scan in Mobile
 
 ===== Login Api =====
 
-1. reveive signed message ,verify message, notify front end
+reveive signed message ,verify message, notify front end
 
 =====  Transaction signature=====
 
-2. signature transaction for front end
+signature transaction for front end
 
 ===== Synchronize transction events =====
 
