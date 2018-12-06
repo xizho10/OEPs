@@ -23,8 +23,8 @@ API for App wake up and QR code scan in Mobile
 <pre>
 {
 	"network": 1,
-	"contractHash": "",
-	"type": "invoke or transfer",
+	"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
+	"type": "invoke",
 	"op": "methodname",
 	"args": [
 		true,
@@ -44,8 +44,8 @@ API for App wake up and QR code scan in Mobile
 <pre>
 {
 	"network": 1,
-	"contractHash": "",
-	"type": "invoke or transfer",
+	"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
+	"type": "invoke",
 	"op": "methodname",
 	"args": [
 		true,
