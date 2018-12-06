@@ -3,7 +3,7 @@
   Title: dAPI for Mobile
   Author: Josh Chow <josh_chow@163.com>, Min Xiao, Ning Hu, Lingxiao Su, Dashuang Wang .
   Type: Standard
-  Status: Accepted
+  Status: POC
   Created: 2018-12-6
 </pre>
 
