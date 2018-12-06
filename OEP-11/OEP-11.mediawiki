@@ -1,10 +1,10 @@
 <pre>
   OEP: 11
   Title: dAPI for Mobile
-  Author: josh chow <josh_chow@163.com>, dashuang wang <wdashuang@gmail.com>
+  Author: Josh Chow <josh_chow@163.com>, Min Xiao, Ning Hu, Lingxiao Su, Dashuang Wang .
   Type: Standard
   Status: Accepted
-  Created: 2018-12-8
+  Created: 2018-12-6
 </pre>
 
 ==Abstract==
@@ -20,14 +20,20 @@ API for App wake up and QR code scan in Mobile
 === dApp front end ===
 
 
-====wakeup Provider and send dApp owner signed transaction====
+====wakeup Provider for invoke smartcontract====
+
+1. wakeup Provider: send dApp owner signed transaction
+
 <pre>
 {
 	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
 }
 </pre>
 
-====wakeup Provider and send message for user signature====
+====wakeup Provider for login dApp ====
+
+1. wakeup Provider: send message for user signature
+
 <pre>
 {
 	"message": "HgigFdfwf",
@@ -37,25 +43,41 @@ API for App wake up and QR code scan in Mobile
 
 === dApp back end ===
 
-====reveive signature message ,notify front end ====
+1. reveive signature message ,notify front end
 
-====signature transaction for front end====
+2. signature transaction for front end
 
-====synchronize transction events of Smartcontract====
+3. synchronize transction events of Smartcontract
 
 
 
 === Provider ===
 
 
-====scan transaction,verify dApp owner signature, add signature, send to blockchain====
+====scan transaction====
+
+1. scan transaction
+
+2. verify dApp owner signature
+
+3. add user signature
+
+4. send to blockchain
+
 <pre>
 {
 	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
 }
 </pre>
 
-====scan message, verify dApp owner signature, add signature, send to callback url====
+====scan message====
+
+1. scan message
+2. verify dApp owner signature
+3. add user signature
+4. send to callback url
+
+
 <pre>
 {
 	"message": "HgigFdfwf",
@@ -64,11 +86,17 @@ API for App wake up and QR code scan in Mobile
 </pre>
 
 ==Implementation==
-====Example implementations are available at====
+====Example implementations are available: ====
 
 
 
 
-[[Image:invoke.png|invoke]]
+
+
+==== User login dApp ====
 
 [[Image:login.png|login]]
+
+==== User invoke smart contract ====
+
+[[Image:invoke.png|invoke]]
