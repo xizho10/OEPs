@@ -22,12 +22,13 @@ API for App wake up and QR code scan in Mobile
 ====wakeup ONTO message====
 <pre>
 {
-    "contractHash":"",
-    "type": "invoke", // or transfer
+	"contractHash": "",
+	"type": "invoke or transfer",
 	"op": "methodname",
 	"args": [
 		true,
 		100,
+		"Long:1000",
 		"ByteArray:aabb",
 		"String:hello"
 	]
@@ -41,12 +42,13 @@ API for App wake up and QR code scan in Mobile
 ====scan message====
 <pre>
 {
-    "contractHash":"",
-    "type": "invoke", // or transfer
+	"contractHash": "",
+	"type": "invoke or transfer",
 	"op": "methodname",
 	"args": [
 		true,
 		100,
+		"Long:1000",
 		"ByteArray:aabb",
 		"String:hello"
 	]
