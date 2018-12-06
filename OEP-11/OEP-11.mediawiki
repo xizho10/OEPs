@@ -37,9 +37,11 @@ API for App wake up and QR code scan in Mobile
 
 === dApp back end ===
 
-====notify front end signed message====
+====reveive signed message ,notify front end ====
 
-====sync transction event of Smartcontract====
+====signature  transaction for front end====
+
+====synchronize transction events of Smartcontract====
 
 
 
