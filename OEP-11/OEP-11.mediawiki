@@ -19,396 +19,41 @@ dAPI currently only supports chrome extension, which cannot be used on the mobil
 === dApp front end===
 API for App wake up and QR code scan in Mobile
 
-====request signdata====
-/api/v1/request/signdata/{dappid}/{msg}
-
-====get signeddata====
-/api/v1/getsigneddata/{dappid}/{msg}
-
-====request send transaction====
-/api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
-
-
-=== dApp backend ===
-
-====registry dApp====
-/api/v1/registry
-
-====upload template====
-/api/v1/upload/{dappid}/template
-
-=== Server API ===
-
-
-
-
-====for dapp front end====
-/api/v1/upload/{dappid}/getsigneddata
-/api/v1/query/transactionhistory//{dappid}/{pagesize}/{page}
-
-====for dapp back end====
-/api/v1/registry
-/api/v1/upload/{dappid}/template
-
-====for wallet====
-POST /api/v1/post/signeddata/{dappid}/{msg}/{ontid or asset}
-/api/v1/contruct/transaction/{templateid}/{network}/{params}/{msg}
-POST /api/v1/send/transaction
-
-====query====
-/api/v1/query/template/{dappid}/{templateid}
-/api/v1/query/templates/{dappid}/{pagesize}/{page}
-/api/v1/query/transferhistory/{dappid}/{pagesize}/{page}
-/api/v1/query/invokehistory/{dappid}/{pagesize}/{page}
-
-
-====post signeddata====
-
-/api/v1/signeddata/{dappid}/{msg}/{ontid or asset}
-
+====wakeup ONTO message====
 <pre>
 {
-    "id":"t",
-    "method":"postsigneddata",
-    "appName":"",
-    "params":{
-        "rawData":"48656C6C6F20776F726C64", //Hello world
-        "ontid":"",
-        "publickey":"",
-        "assetAddress":"",
-        "publickey":"",
-        "signedData": "cab96ef92419df915902817b2c9ed3f6c1c4956b3115737f7c787b03eed3f49e56547f3117867db64217b84cd6c6541d7b248f23ceeef3266a9a0bd6497260cb"
-    }
-}
-</pre>
-
-response:
-
-</pre>
-{
-    "id": "1",
-    "method": "signdata",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-    }
- }
-</pre>
-
-
-====post invoke smart contract template====
-<pre>
-{
-  "id": "sdggsg",
-  "method": "invokeSmartcontractTemplate",
-  "appName":"",
-  "params": {
-    "contranHash":"",
-    "operation": "testListAndStr",
-    "args": [
-      {
-        "name": "msgList",
-        "value": [
-          true,
-          100,
-          "ByteArray:aabb",
-          "String:hello",
-          [
-            true,
-            100,
-            "ByteArray:aabb",
-            "String:hello"
-          ]
-        ]
-      },
-      {
-        "name": "msgMap",
-        "value": {
-          "key": {
-            "key": "String:hello2",
-            "key1": true,
-            "key3": 100
-          }
-        }
-      },
-      {
-        "name": "msgStr",
-        "value": "String:test"
-      }
-    ],
-    "payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-    "signature": {
-      "m": 1,
-      "signers": [
-        "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"
-      ]
-    }
-  }
+    "contractHash":"",
+    "type": "invoke", // or transfer
+	"op": "methodname",
+	"args": [
+		true,
+		100,
+		"ByteArray:aabb",
+		"String:hello"
+	]
 }
 </pre>
 
 
-response:
+=== ONTO ===
 
-</pre>
-{
-    "id": "1",
-    "method": "invokesmartcontract",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-        "templateid": ""
-    }
- }
-</pre>
 
-====post TransferTemplate====
+====scan message====
 <pre>
 {
-    "id":"t",
-    "method":"postTransferTemplate",
-    "appName":"",
-    "params":{
-    	"gas_price":0,
-    	"gas_limit":20000,
-    	"asset":"ont",
-    	"from":"ATACcJPZ8eECdWS4ashaMdqzhywpRTq3oN",
-    	"to":"AeoBhZtS8AmGp3Zt4LxvCqhdU4eSGiK44M",
-    	"amount":"10"
-    }
+    "contractHash":"",
+    "type": "invoke", // or transfer
+	"op": "methodname",
+	"args": [
+		true,
+		100,
+		"ByteArray:aabb",
+		"String:hello"
+	]
 }
 </pre>
 
 
-response:
-
-
-</pre>
-{
-    "id": "1",
-    "method": "transfer",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-        "txHash": ""
-    }
- }
-</pre>
-
-
-
-
-
-
-====query sign====
-<pre>
-{
-    "id":"t",
-    "method":"querySign",
-    "params":{
-        "id": "id" //Hello world
-    }
-}
-</pre>
-
-response:
-
-</pre>
-{
-    "id": "1",
-    "method": "queryLogin",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-        "signedData": "cab96ef92419df915902817b2c9ed3f6c1c4956b3115737f7c787b03eed3f49e56547f3117867db64217b84cd6c6541d7b248f23ceeef3266a9a0bd6497260cb",
-        "address":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-        "time": "20181204141130"
-        "publickey":""
-
-    }
- }
-</pre>
-
-
-
-
-====query  smartcontract invoke history====
-
-
-http://127.0.0.1:80/api/v1/invokesmartcontract/history/{pagesize}/{page}
-
-response:
-
-</pre>
-{
-    "id": "1",
-    "method": "queryTransferHistory",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-        [
-            {
-                "id": "",
-                "data": "",
-                "state": "sended",   // or not send
-                "time": "20181204141130"
-                "hash": ""
-             }
-        ]
-
-    }
- }
-</pre>
-
-
-
-====query transfer history====
-
-
-http://127.0.0.1:80/api/v1/transfer/history/{pagesize}/{page}
-
-response:
-
-</pre>
-{
-    "id": "1",
-    "method": "queryTransferHistory",
-    "errorcode": 0,
-    "desc":"SUCCESS",
-    "result": {
-        [
-            {
-                "id": "",
-                "data": "",
-                "state": "sended",   // or not send
-                "time": "20181204141130"
-                "hash": ""
-             }
-        ]
-
-    }
- }
-</pre>
-
-
-
-
-===DB in Server===
-
-
-====dapp info====
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| data  | String |           | Required |
-| time  | String |           | Required |
-
-
-
-====signed data====
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| signedData  | String |           | Required |
-| address  | String |           | Required |
-| publickey  | String |           | Required |
-| time  | String |           | Required |
-
-
-====invoke smart contract====
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| method  | String |           | Required |
-| params  | String |           | Required |
-| address  | String |           | Required |
-| time  | String |           | Required |
-
-
-
-====tansfer====
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| params  | String |           | Required |
-| address  | String |           | Required |
-| time  | String |           | Required |
-
-
-====transactions====
-
-
-| Parameter   | Type  | description |          instruction |
-| ------- | ------ | ------------- | ----------- |
-| id  | String |           | Required |
-| appName  | String |           | Required |
-| hash  | String |           | Required |
-| hexstring  | String |           | Required |
-| time  | String |           | Required |
-
-
-{| border="0" style="border-collapse:collapse"
-| Parameter
-| Type
-| description
-| instruction
-|-
-| id
-| String
-|
-| Required
-|-
-| appName
-| String
-|
-| Required
-|-
-| hash
-| String
-|
-| Required
-|-
-| hexstring
-| String
-|
-| Required
-|-
-| time
-| String
-|
-| Required
-|}
-
-===Error code===
-
-
-
-
-
-{| border="0" style="border-collapse:collapse"
-| Code
-|  description
-|-
-| 0
-| SUCCESS
-|-
-| 80001
-| params error
-|-
-| 80002
-| method error
-|-
-| 80003
-| internal error
-|}
 
 ==Implementation==
 ====Example implementations are available at====
