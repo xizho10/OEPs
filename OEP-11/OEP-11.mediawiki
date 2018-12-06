@@ -11,58 +11,62 @@
 The OEP-11 Proposal is a standard interface like dAPI in Mobile. Support dApp wake up Provider and Provider scan QR code.
 
 ==Motivation==
-dAPI currently only supports chrome extension, which cannot be used on the mobile side, Unable to meet a large number of mobile DAPP.
+dAPI currently only supports chrome extension and desktop, which cannot be used on the mobile side, Unable to meet a large number of mobile DAPP.
 
 ==Specification==
 
-
-=== dApp front end===
 API for App wake up and QR code scan in Mobile
 
-====wakeup ONTO message====
+=== dApp front end ===
+
+
+====wakeup Provider , verify,  add signature, send to blockchain====
 <pre>
 {
-	"network": 1,
-	"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
-	"type": "invoke",
-	"op": "methodname",
-	"args": [
-		true,
-		100,
-		"Long:1000",
-		"ByteArray:aabb",
-		"String:hello"
-	]
+	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
 }
 </pre>
 
-
-=== ONTO ===
-
-
-====scan message====
+====wakeup Provider and send message for user signature====
 <pre>
 {
-	"network": 1,
-	"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
-	"type": "invoke",
-	"op": "methodname",
-	"args": [
-		true,
-		100,
-		"Long:1000",
-		"ByteArray:aabb",
-		"String:hello"
-	]
+	"message": "HgigFdfwf",
+	"callback": "url"
 }
 </pre>
 
+=== dApp back end ===
 
+====notify front end signed message====
+
+====sync transction event of Smartcontract====
+
+
+
+=== Provider ===
+
+
+====scan transaction,verify, add signature, send to blockchain====
+<pre>
+{
+	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
+}
+</pre>
+
+====scan message, signature, send to callback url====
+<pre>
+{
+	"message": "HgigFdfwf",
+	"callback": "url"
+}
+</pre>
 
 ==Implementation==
 ====Example implementations are available at====
 
 
-[[Image:login.png|login]]
+
 
 [[Image:invoke.png|invoke]]
+
+[[Image:login.png|login]]
