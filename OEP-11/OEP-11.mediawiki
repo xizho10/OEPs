@@ -41,6 +41,8 @@ API for App wake up and QR code scan in Mobile
 <pre>
 {
     "type": "invoke",
+    "login": true,
+    "url": "http://127.0.0.1:80/rawtransaction/txhash", //optional: get signedTx from DApp backend
 	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
 }
 </pre>
@@ -49,10 +51,16 @@ or
 
 <pre>
 {
-    "type": "url",
-	"signedTx": "http://127.0.0.1:80/rawtransaction/txhash"
+    "type": "invoke",
+    "login": false,
+    "method":"post",
+    "url": "http://127.0.0.1:80/buy",
 }
+
 </pre>
+
+
+
 
 ==== DApp back end ====
 
@@ -60,14 +68,15 @@ or
 
 reveive signed message ,verify message, notify front end
 
-=====  Transaction signature=====
+=====  Transaction make and signature=====
 
-signature transaction for front end
+* if user logined, make and signature transaction for front end
+
+* if user not logined, DApp backend received Provider post Address, response  signedTx to Provider
 
 ===== Synchronize transction events =====
 
 synchronize transction events of Smartcontract
-
 
 
 === Provider ===
@@ -104,9 +113,25 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 <pre>
 {
+    "type": "invoke",
+    "login": true,
+    "url": "http://127.0.0.1:80/rawtransaction/txhash", //optional: get signedTx from DApp backend
 	"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
 }
 </pre>
+
+or
+
+<pre>
+{
+    "type": "invoke",
+    "login": false,
+    "method":"post",
+    "url": "http://127.0.0.1:80/buy",
+}
+
+</pre>
+then provider post Address to DApp backend, return  signedTx
 
 
 
@@ -118,10 +143,10 @@ Example implementations are available:
 
 
 
-==== User login dApp ====
+==== Split login and invoke smart contract ====
 
-[[Image:login.png|login]]
+[[Image:split-login-invoke.png|split-login-invoke]]
 
-==== User invoke smart contract ====
+==== Invoke smart contract with login ====
 
-[[Image:invoke.png|invoke]]
+[[Image:invoke-with-login.png|invoke-with-login]]
