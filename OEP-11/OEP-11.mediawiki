@@ -45,7 +45,14 @@ API for App wake up and QR code scan in Mobile
 }
 </pre>
 
+or
 
+<pre>
+{
+    "type": "url",
+	"signedTx": "http://127.0.0.1:80/rawtransaction/txhash"
+}
+</pre>
 
 ==== DApp back end ====
 
