@@ -54,7 +54,7 @@ or
     "type": "invoke",
     "login": false,
     "method":"post",
-    "url": "http://127.0.0.1:80/buy",
+    "url": "http://127.0.0.1:80/login/callback",
 }
 
 </pre>
@@ -127,7 +127,7 @@ or
     "type": "invoke",
     "login": false,
     "method":"post",
-    "url": "http://127.0.0.1:80/buy",
+    "url": "http://127.0.0.1:80/login/callback",
 }
 
 </pre>
