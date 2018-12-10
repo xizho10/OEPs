@@ -31,7 +31,7 @@ API for App wake up and QR code scan in Mobile
     "type": "ontid", // or account
     "method":"post",
 	"message": "HgigFdfwf",
-	"callback": "http://127.0.0.1:80/callback"
+	"callback": "http://127.0.0.1:80/login/callback"
 }
 </pre>
 
@@ -101,7 +101,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
     "type": "ontid", // or account
     "method":"post",
 	"message": "HgigFdfwf",
-	"callback": "http://127.0.0.1:80/callback"
+	"callback": "http://127.0.0.1:80/login/callback"
 }
 </pre>
 
