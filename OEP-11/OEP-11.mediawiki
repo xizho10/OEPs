@@ -34,13 +34,15 @@ API for App wake up and QR code scan in Mobile
 	"callback": "http://127.0.0.1:80/login/callback"
 }
 
-2. Provider send message, publicKey and signature to callback url.
-
 </pre>
+
+2. Provider send message, publicKey and signature to callback url.
 
 =====Wakeup Provider for invoke smartcontract=====
 
 1. wakeup Provider: send dApp owner signed transaction
+
+if user has logined.
 
 <pre>
 {
@@ -53,6 +55,8 @@ API for App wake up and QR code scan in Mobile
 
 or
 
+if user didn't login:
+
 <pre>
 {
 	"action": "invoke",
@@ -63,6 +67,7 @@ or
 
 </pre>
 
+then Provider post Address to DApp backend, DApp backend return  signedTx
 
 
 
@@ -70,7 +75,7 @@ or
 
 ===== Login Api =====
 
-reveive signed message ,verify message, notify front end
+reveive signed message ,verify message, send verify result to front end
 
 =====  Transaction make and signature=====
 
@@ -118,6 +123,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 4. send to blockchain
 
+if user has logined:
 <pre>
 {
 	"action": "invoke",
@@ -129,6 +135,8 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 or
 
+if user didn't login:
+
 <pre>
 {
 	"action": "invoke",
@@ -138,7 +146,7 @@ or
 }
 
 </pre>
-then provider post Address to DApp backend, return  signedTx
+then provider post Address to DApp backend, DApp backend return  signedTx
 
 
 
