@@ -29,11 +29,11 @@ API for App wake up and QR code scan in Mobile
 {
 	"action": "login",
 	"params": {
-        "type": "ontid", // or account
-        "method": "post",
-        "message": "HgigFdfwf",
-        "callback": "http://127.0.0.1:80/login/callback"
-    }
+		"type": "ontid or account",
+		"method": "post",
+		"message": "HgigFdfwf",
+		"callback": "http://127.0.0.1:80/login/callback"
+	}
 }
 
 </pre>
@@ -50,10 +50,10 @@ if user has logined.
 {
 	"action": "invoke",
 	"params": {
-	    "login": true,
-	    "url": "http://127.0.0.1:80/rawtransaction/txhash", //optional: get signedTx from DApp backend
-	    "signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
-    }
+		"login": true,
+		"url": "http://127.0.0.1:80/rawtransaction/txhash",//optional: get signedTx from DApp backend
+		"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
+	}
 }
 </pre>
 
@@ -65,10 +65,10 @@ if user didn't login:
 {
 	"action": "invoke",
 	"params": {
-        "login": false,
-        "method": "post",
-        "url": "http://127.0.0.1:80/login/callback"
-    }
+		"login": false,
+		"method": "post",
+		"url": "http://127.0.0.1:80/login/callback"
+	}
 }
 
 </pre>
@@ -113,11 +113,11 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 {
 	"action": "login",
 	"params": {
-        "type": "ontid", // or account
-        "method": "post",
-        "message": "HgigFdfwf",
-        "callback": "http://127.0.0.1:80/login/callback"
-    }
+		"type": "ontid or account",
+		"method": "post",
+		"message": "HgigFdfwf",
+		"callback": "http://127.0.0.1:80/login/callback"
+	}
 }
 </pre>
 
@@ -136,10 +136,10 @@ if user has logined:
 {
 	"action": "invoke",
 	"params": {
-	    "login": true,
-	    "url": "http://127.0.0.1:80/rawtransaction/txhash", //optional: get signedTx from DApp backend
-	    "signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
-    }
+		"login": true,
+		"url": "http://127.0.0.1:80/rawtransaction/txhash",//optional: get signedTx from DApp backend
+		"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
+	}
 }
 </pre>
 
@@ -151,10 +151,10 @@ if user didn't login:
 {
 	"action": "invoke",
 	"params": {
-        "login": false,
-        "method": "post",
-        "url": "http://127.0.0.1:80/login/callback"
-    }
+		"login": false,
+		"method": "post",
+		"url": "http://127.0.0.1:80/login/callback"
+	}
 }
 
 </pre>
@@ -166,15 +166,15 @@ then provider post Address to DApp backend, DApp backend return  signedTx
 response example:
 <pre>
 {
-  "action": "login",
-  "error": 0,
-  "desc": "SUCCESS",
-  "result": true
+	"action": "login",
+	"error": 0,
+	"desc": "SUCCESS",
+	"result": true
 }
 
 </pre>
 {| border="0" style="border-collapse:collapse"
-| Code
+| Error Code
 |  description
 |-
 | 0
