@@ -66,26 +66,22 @@ only method and parameters, dont need signature, Provider help make transaction:
 		"login": true,
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",
 		"message": "will pay 1 ONT in this transaction",
-		"main": {
+		"config": {
 			"operation": "method name",
 			"args": [{
-					"name": "msgList",
-					"value": [
-						true,
-						100,
-						"Long:100000000000",
-						"ByteArray:aabb",
-						"String:hello", [
-							true,
-							100
-						]
-					]
-				},
-				{
-					"name": "msgStr",
-					"value": "String:test"
-				}
-			]
+				"name": "msgList",
+				"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100]]
+			}, {
+				"name": "msgStr",
+				"value": "String:test"
+			}],
+			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
+			"gasLimit": 20000,
+			"gasPrice": 500,
+			"signature": {
+				"m": 1,
+				"signers": ["AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
+			}
 		}
 	}
 }
@@ -186,26 +182,22 @@ only method and parameters, dont need signature, Provider help make transaction:
 		"login": true,
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",
 		"message": "will pay 1 ONT in this transaction",
-		"main": {
+		"config": {
 			"operation": "method name",
 			"args": [{
-					"name": "msgList",
-					"value": [
-						true,
-						100,
-						"Long:100000000000",
-						"ByteArray:aabb",
-						"String:hello", [
-							true,
-							100
-						]
-					]
-				},
-				{
-					"name": "msgStr",
-					"value": "String:test"
-				}
-			]
+				"name": "msgList",
+				"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100]]
+			}, {
+				"name": "msgStr",
+				"value": "String:test"
+			}],
+			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
+			"gasLimit": 20000,
+			"gasPrice": 500,
+			"signature": {
+				"m": 1,
+				"signers": ["AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
+			}
 		}
 	}
 }
