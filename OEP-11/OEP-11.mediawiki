@@ -58,6 +58,39 @@ if user has logined.
 }
 </pre>
 
+only method and parameters, dont need signature, Provider help make transaction:
+<pre>
+{
+	"action": "invoke",
+	"params": {
+		"login": true,
+		"url": "http://127.0.0.1:80/rawtransaction/txhash",
+		"message": "will pay 1 ONT in this transaction",
+		"main": {
+			"operation": "method name",
+			"args": [{
+					"name": "msgList",
+					"value": [
+						true,
+						100,
+						"Long:100000000000",
+						"ByteArray:aabb",
+						"String:hello", [
+							true,
+							100
+						]
+					]
+				},
+				{
+					"name": "msgStr",
+					"value": "String:test"
+				}
+			]
+		}
+	}
+}
+</pre>
+
 or
 
 if user didn't login:
@@ -141,6 +174,39 @@ if user has logined:
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",//optional: get signedTx from DApp backend
 		"message": "will pay 1 ONT in this transaction",//optional
 		"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
+	}
+}
+</pre>
+
+only method and parameters, dont need signature, Provider help make transaction:
+<pre>
+{
+	"action": "invoke",
+	"params": {
+		"login": true,
+		"url": "http://127.0.0.1:80/rawtransaction/txhash",
+		"message": "will pay 1 ONT in this transaction",
+		"main": {
+			"operation": "method name",
+			"args": [{
+					"name": "msgList",
+					"value": [
+						true,
+						100,
+						"Long:100000000000",
+						"ByteArray:aabb",
+						"String:hello", [
+							true,
+							100
+						]
+					]
+				},
+				{
+					"name": "msgStr",
+					"value": "String:test"
+				}
+			]
+		}
 	}
 }
 </pre>
