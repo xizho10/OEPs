@@ -40,6 +40,18 @@ API for App wake up and QR code scan in Mobile
 
 2. Provider send message, publicKey and signature to callback url.
 
+<pre>
+{
+	"action": "login",
+	"params": {
+		"publicKey": "",
+		"message": "HgigFdfwf",
+		"signature": ""
+	}
+}
+
+</pre>
+
 =====Wakeup Provider for invoke smartcontract=====
 
 1. wakeup Provider: send dApp owner signed transaction
@@ -167,6 +179,20 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 		"callback": "http://127.0.0.1:80/login/callback"
 	}
 }
+</pre>
+
+Provider response:
+
+<pre>
+{
+	"action": "login",
+	"params": {
+		"publicKey": "",
+		"message": "HgigFdfwf",
+		"signature": ""
+	}
+}
+
 </pre>
 
 ====Scan transaction QrCode====
