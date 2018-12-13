@@ -66,30 +66,32 @@ only method and parameters, dont need signature, Provider help make transaction:
 		"login": true,
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",
 		"message": "will pay 1 ONT in this transaction",
-		"config": {
+		"invokeConfig": {
 			"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
-			"operation": "method name",
-			"args": [{
-				"name": "arg0-list",
-				"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100], {
-					"key": 6
-				}]
-			}, {
-				"name": "arg1-map",
-				"value": {
-					"key": "String:hello",
-					"key1": "ByteArray:aabb",
-					"key2": "Long:100000000000",
-					"key3": true,
-					"key4": 100,
-					"key5": [100],
-					"key6": {
+			"functions": [{
+				"operation": "method name",
+				"args": [{
+					"name": "arg0-list",
+					"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100], {
 						"key": 6
+					}]
+				}, {
+					"name": "arg1-map",
+					"value": {
+						"key": "String:hello",
+						"key1": "ByteArray:aabb",
+						"key2": "Long:100000000000",
+						"key3": true,
+						"key4": 100,
+						"key5": [100],
+						"key6": {
+							"key": 6
+						}
 					}
-				}
-			}, {
-				"name": "arg2-str",
-				"value": "String:test"
+				}, {
+					"name": "arg2-str",
+					"value": "String:test"
+				}]
 			}],
 			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
 			"gasLimit": 20000,
@@ -198,30 +200,32 @@ only method and parameters, dont need signature, Provider help make transaction:
 		"login": true,
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",
 		"message": "will pay 1 ONT in this transaction",
-		"config": {
+		"invokeConfig": {
 			"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
-			"operation": "method name",
-			"args": [{
-				"name": "arg0-list",
-				"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100], {
-					"key": 6
-				}]
-			}, {
-				"name": "arg1-map",
-				"value": {
-					"key": "String:hello",
-					"key1": "ByteArray:aabb",
-					"key2": "Long:100000000000",
-					"key3": true,
-					"key4": 100,
-					"key5": [100],
-					"key6": {
+			"functions": [{
+				"operation": "method name",
+				"args": [{
+					"name": "arg0-list",
+					"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100], {
 						"key": 6
+					}]
+				}, {
+					"name": "arg1-map",
+					"value": {
+						"key": "String:hello",
+						"key1": "ByteArray:aabb",
+						"key2": "Long:100000000000",
+						"key3": true,
+						"key4": 100,
+						"key5": [100],
+						"key6": {
+							"key": 6
+						}
 					}
-				}
-			}, {
-				"name": "arg2-str",
-				"value": "String:test"
+				}, {
+					"name": "arg2-str",
+					"value": "String:test"
+				}]
 			}],
 			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
 			"gasLimit": 20000,
