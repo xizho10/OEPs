@@ -45,11 +45,11 @@ API for App wake up and QR code scan in Mobile
 	"action": "login",
 	"params": {
 		"publicKey": "",
+		"address": "",
 		"message": "HgigFdfwf",
 		"signature": ""
 	}
 }
-
 </pre>
 
 =====Wakeup Provider for invoke smartcontract=====
@@ -84,7 +84,7 @@ only method and parameters, dont need signature, Provider help make transaction:
 				"operation": "method name",
 				"args": [{
 					"name": "arg0-list",
-					"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100], {
+					"value": [true, 100, "Long:100000000000", "Address:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ", "ByteArray:aabb", "String:hello", [true, 100], {
 						"key": 6
 					}]
 				}, {
@@ -188,6 +188,7 @@ Provider response:
 	"action": "login",
 	"params": {
 		"publicKey": "",
+		"address": "",
 		"message": "HgigFdfwf",
 		"signature": ""
 	}
@@ -232,7 +233,7 @@ only method and parameters, dont need signature, Provider help make transaction:
 				"operation": "method name",
 				"args": [{
 					"name": "arg0-list",
-					"value": [true, 100, "Long:100000000000", "ByteArray:aabb", "String:hello", [true, 100], {
+					"value": [true, 100, "Long:100000000000","Address:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ", "ByteArray:aabb", "String:hello", [true, 100], {
 						"key": 6
 					}]
 				}, {
