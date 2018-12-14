@@ -44,8 +44,10 @@ API for App wake up and QR code scan in Mobile
 {
 	"action": "login",
 	"params": {
+		"type": "ontid or account",
 		"publicKey": "",
 		"address": "",
+		"ontid": "",
 		"message": "HgigFdfwf",
 		"signature": ""
 	}
@@ -187,8 +189,10 @@ Provider response:
 {
 	"action": "login",
 	"params": {
+		"type": "ontid or account",
 		"publicKey": "",
 		"address": "",
+		"ontid": "",
 		"message": "HgigFdfwf",
 		"signature": ""
 	}
