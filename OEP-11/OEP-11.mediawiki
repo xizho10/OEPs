@@ -195,7 +195,7 @@ response:
 
 === DApp front end ===
 
-=====Scenario 2:Wakeup Provider for login DApp =====
+=====Scenario 2: Wakeup Provider for login DApp =====
 
 1. wakeup Provider: send message for user signature
 
@@ -205,7 +205,7 @@ response:
 
 
 
-=====Scenario 2:Wakeup Provider for invoke smartcontract=====
+=====Scenario 2: Wakeup Provider for invoke smartcontract=====
 
 1. wakeup Provider: send dApp owner signed transaction
 
@@ -217,7 +217,7 @@ then Provider post Address to DApp backend, DApp backend return  signedTx
 
 === DApp back end ===
 
-===== Login Api =====
+=====Scenario 1 and 2: Login Api =====
 
 reveive signed message ,verify message, send verify result to front end
 
@@ -236,7 +236,7 @@ synchronize transction events of Smartcontract
 
 Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
-====Scenario 1;Scan login message QrCode====
+====Scenario 1; Scan login message QrCode====
 
 1. scan message
 
@@ -248,7 +248,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====Scenario 1:Scan transaction QrCode====
+====Scenario 1: Scan transaction QrCode====
 
 1. scan transaction
 
@@ -263,7 +263,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====Scenario 3:H5 DApp login after be opened in Provider====
+====Scenario 3: H5 DApp login after be opened in Provider====
 
 1. H5 DApp: send message for user signature
 
@@ -273,7 +273,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====Scenario 3:H5 DApp invoke smartcontract====
+====Scenario 3: H5 DApp invoke smartcontract====
 
 the message the same to Scan transaction QrCode
 
