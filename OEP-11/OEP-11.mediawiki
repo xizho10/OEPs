@@ -63,7 +63,9 @@ ontwallet://ont.io?param={the json data}
 	"params": {
 		"type": "ontid or account",
 		"method": "post",
+		"dappName": "dapp Name",
 		"message": "HgigFdfwf",
+		"expired": "20181215152730",
 		"callback": "http://127.0.0.1:80/login/callback"
 	}
 }
@@ -209,7 +211,9 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 	"params": {
 		"type": "ontid or account",
 		"method": "post",
+		"dappName": "dapp Name",
 		"message": "HgigFdfwf",
+		"expired": "20181215152730",
 		"callback": "http://127.0.0.1:80/login/callback"
 	}
 }
