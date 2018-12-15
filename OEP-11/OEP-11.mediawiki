@@ -10,6 +10,16 @@
 ==Abstract==
 The OEP-11 Proposal is a standard interface like dAPI in Mobile. Support dApp wake up Provider and Provider scan QR code.
 
+
+There are three Scenario will use H5 dApp login authorization and invoke smart contract request
+
+* Scenario 1: Web generate  QR code, Provider scans the QR code for login and invoke smart contract request.
+
+* Scenario 2: The DApp wakeup Provider for login authorization and invoke smart contract request.
+
+* Scenario 3:  H5 dApp is embedded in Mobile Wallet App. Open H5 dApp for login authorization and H5 dApp invoke smart contract request.
+
+
 ==Motivation==
 dAPI currently only supports chrome extension and desktop, which cannot be used on the mobile side, Unable to meet a large number of mobile DAPP.
 
@@ -24,13 +34,7 @@ The main interface of dApi mobile:
 * Invoke smart contract: DApp send invoke request. Provider signature and send to MainNet.
 * Transfer ONT/ONG: the same to invoke smart contract.
 
-There are three Scenario will use H5 dApp login authorization and invoke smart contract request
 
-* Scenario 1: Web generate  QR code, Provider scans the QR code for login and invoke smart contract request.
-
-* Scenario 2: The DApp wakeup Provider for login authorization and invoke smart contract request.
-
-* Scenario 3:  H5 dApp is embedded in Mobile Wallet App. Open H5 dApp for login authorization and H5 dApp invoke smart contract request.
 
 
 === Flow of the Protocol===
@@ -44,13 +48,13 @@ ontwallet://ont.io?param={the json data}
 
 
 
-====  Flow of Login====
+====  Login====
 
 
 [[Image:login.png|login]]
 
 
-====  Flow of Invoke Smart Contract ====
+====  Invoke Smart Contract ====
 
 
 [[Image:invoke.png|invoke]]
@@ -191,7 +195,7 @@ response:
 
 === DApp front end ===
 
-=====Wakeup Provider for login DApp =====
+=====Scenario 2:Wakeup Provider for login DApp =====
 
 1. wakeup Provider: send message for user signature
 
@@ -201,7 +205,7 @@ response:
 
 
 
-=====Wakeup Provider for invoke smartcontract=====
+=====Scenario 2:Wakeup Provider for invoke smartcontract=====
 
 1. wakeup Provider: send dApp owner signed transaction
 
@@ -232,7 +236,7 @@ synchronize transction events of Smartcontract
 
 Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
-====Scan login message QrCode====
+====Scenario 1;Scan login message QrCode====
 
 1. scan message
 
@@ -244,7 +248,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====Scan transaction QrCode====
+====Scenario 1:Scan transaction QrCode====
 
 1. scan transaction
 
@@ -259,7 +263,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====H5 DApp login after be opened in Provider====
+====Scenario 3:H5 DApp login after be opened in Provider====
 
 1. H5 DApp: send message for user signature
 
@@ -269,7 +273,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====H5 DApp invoke smartcontract====
+====Scenario 3:H5 DApp invoke smartcontract====
 
 the message the same to Scan transaction QrCode
 
