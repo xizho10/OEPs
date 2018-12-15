@@ -87,7 +87,7 @@ response:
 {
 	"action": "login",
 	"error": 0,
-    "desc": "SUCCESS",
+	"desc": "SUCCESS",
 	"result": {
 		"type": "ontid or account",
 		"publicKey": "",
@@ -236,7 +236,7 @@ synchronize transction events of Smartcontract
 
 Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
-====Scenario 1; Scan login message QrCode====
+====Scenario 1: Scan login message QrCode====
 
 1. scan message
 
