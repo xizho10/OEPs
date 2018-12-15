@@ -36,17 +36,21 @@ DApp calls this protocol and send data to the Mobile Wallet App. The request for
 
 ontwallet://ont.io?param={the json data}
 
-
-2. Login
-
-
-[[Image:https://images-cdn.shimo.im/z5aJ1nw4NnEjGcYQ/image.png!thumbnail|login]]
+2. getAccount getIdentity
 
 
-3. Invoke smart contract
+3. Login(getSignature)
 
 
-[[Image:https://i.imgur.com/x8dT0G5.png|invoke]]
+[[Image:login.png|login]]
+
+
+4. Invoke smart contract
+
+
+[[Image:invoke.png|invoke]]
+
+5. Transfer ONT/ONG
 
 
 === DApp ===
@@ -171,6 +175,9 @@ if user didn't login:
 
 then Provider post Address to DApp backend, DApp backend return  signedTx
 
+=====Wakeup Provider for Transfer ONT/ONG=====
+
+comming soon.
 
 
 ==== DApp back end ====
