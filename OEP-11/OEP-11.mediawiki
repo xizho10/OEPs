@@ -13,9 +13,38 @@ The OEP-11 Proposal is a standard interface like dAPI in Mobile. Support dApp wa
 ==Motivation==
 dAPI currently only supports chrome extension and desktop, which cannot be used on the mobile side, Unable to meet a large number of mobile DAPP.
 
+
+
 ==Specification==
 
-API for App wake up and QR code scan in Mobile
+There are three Scenario will use H5 dApp login authorization and invoke smart contract request
+
+* Scenario 1: Web generate  QR code, The Mobile Wallet App scans the QR code for login and invoke smart contract request.
+
+* Scenario 2: The DApp wakeup Mobile Wallet App for login authorization and invoke smart contract request.
+
+* Scenario 3:  H5 dApp is embedded in Mobile Wallet App. Open H5 dApp for login authorization and H5 dApp invoke smart contract request.
+
+
+==Flow of the Protocol==
+
+1. The Wallet App registers the intercept protocol in the Mobile
+
+The Wallet App first registers the intercept protocol (URL Scheme, appLink) in Mobile such that the H5 dapp can wakeup the Wallet App.
+
+DApp calls this protocol and send data to the Mobile Wallet App. The request format of data is structured as:
+
+ontwallet://ont.io?param={the json data}
+
+
+2. Login
+
+
+![](https://images-cdn.shimo.im/z5aJ1nw4NnEjGcYQ/image.png!thumbnail)
+
+3. Invoke smart contract
+
+![](https://i.imgur.com/x8dT0G5.png)
 
 === DApp ===
 
