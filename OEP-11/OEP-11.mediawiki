@@ -52,10 +52,10 @@ ontwallet://ont.io?param={the json data}
 
 5. Transfer ONT/ONG
 
+the some to invoke smart contract
 
-=== DApp ===
 
-==== DApp front end ====
+=== DApp front end ===
 
 =====Wakeup Provider for login DApp =====
 
@@ -175,12 +175,9 @@ if user didn't login:
 
 then Provider post Address to DApp backend, DApp backend return  signedTx
 
-=====Wakeup Provider for Transfer ONT/ONG=====
-
-comming soon.
 
 
-==== DApp back end ====
+=== DApp back end ===
 
 ===== Login Api =====
 
