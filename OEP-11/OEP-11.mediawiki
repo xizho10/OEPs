@@ -11,18 +11,27 @@
 The OEP-11 Proposal is a standard interface like dAPI in Mobile. Support dApp wake up Provider and Provider scan QR code.
 
 
-There are three Scenario will use H5 dApp login authorization and invoke smart contract request
 
-* Scenario 1: Web generate  QR code, Provider scans the QR code for login and invoke smart contract request.
-
-* Scenario 2: The DApp wakeup Provider for login authorization and invoke smart contract request.
-
-* Scenario 3:  H5 dApp is embedded in Mobile Wallet App. Open H5 dApp for login authorization and H5 dApp invoke smart contract request.
 
 
 ==Motivation==
 dAPI currently only supports chrome extension and desktop, which cannot be used on the mobile side, Unable to meet a large number of mobile DAPP.
 
+
+
+There are three Scenario will use in Mobile dApp
+
+=== Scenario 1: Provider scan QR code  ===
+
+Web generate  QR code, Provider scans the QR code for login and invoke smart contract request.
+
+=== Scenario 2:  DApp wakeup Provider ===
+
+The DApp wakeup Provider for login authorization and invoke smart contract request.
+
+=== Scenario 3: Provider open DApp ===
+
+H5 dApp is embedded in Provider. Open H5 dApp for login authorization and H5 dApp invoke smart contract request.
 
 
 ==Specification==
