@@ -19,9 +19,9 @@ dAPI currently only supports chrome extension and desktop, which cannot be used 
 
 There are three Scenario will use H5 dApp login authorization and invoke smart contract request
 
-* Scenario 1: Web generate  QR code, The Mobile Wallet App scans the QR code for login and invoke smart contract request.
+* Scenario 1: Web generate  QR code, Provider scans the QR code for login and invoke smart contract request.
 
-* Scenario 2: The DApp wakeup Mobile Wallet App for login authorization and invoke smart contract request.
+* Scenario 2: The DApp wakeup Provider for login authorization and invoke smart contract request.
 
 * Scenario 3:  H5 dApp is embedded in Mobile Wallet App. Open H5 dApp for login authorization and H5 dApp invoke smart contract request.
 
@@ -36,8 +36,9 @@ DApp calls this protocol and send data to the Mobile Wallet App. The request for
 
 ontwallet://ont.io?param={the json data}
 
-2. getAccount getIdentity
+2. getAccount or getIdentity
 
+DApp getAccount or getIdentity from Provider
 
 3. Login(getSignature)
 
@@ -198,7 +199,7 @@ synchronize transction events of Smartcontract
 
 Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
-====Scan message QrCode====
+====Scan login message QrCode====
 
 1. scan message
 
