@@ -40,11 +40,14 @@ ontwallet://ont.io?param={the json data}
 2. Login
 
 
-![](https://images-cdn.shimo.im/z5aJ1nw4NnEjGcYQ/image.png!thumbnail)
+[[Image:https://images-cdn.shimo.im/z5aJ1nw4NnEjGcYQ/image.png!thumbnail|login]]
+
 
 3. Invoke smart contract
 
-![](https://i.imgur.com/x8dT0G5.png)
+
+[[Image:https://i.imgur.com/x8dT0G5.png|invoke]]
+
 
 === DApp ===
 
