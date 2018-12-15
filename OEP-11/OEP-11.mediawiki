@@ -56,11 +56,9 @@ DApp getAccount or getIdentity from Provider
 the some to invoke smart contract
 
 
-=== DApp front end ===
+=== Protocol data format ===
 
-=====Wakeup Provider for login DApp =====
-
-1. wakeup Provider: send message for user signature
+====Login request and response====
 
 <pre>
 {
@@ -77,12 +75,14 @@ the some to invoke smart contract
 
 </pre>
 
-2. Provider send message, publicKey and signature to callback url.
+response:
 
 <pre>
 {
 	"action": "login",
-	"params": {
+	"error": 0,
+    "desc": "SUCCESS",
+	"result": {
 		"type": "ontid or account",
 		"publicKey": "",
 		"address": "",
@@ -93,9 +93,9 @@ the some to invoke smart contract
 }
 </pre>
 
-=====Wakeup Provider for invoke smartcontract=====
+====Invoke Smart Contract request and response====
 
-1. wakeup Provider: send dApp owner signed transaction
+
 
 if user has logined.
 
@@ -173,6 +173,37 @@ if user didn't login:
 }
 
 </pre>
+then Provider post Address to DApp backend, DApp backend return  signedTx
+
+response:
+
+<pre>
+{
+	"action": "invoke",
+	"error": 0,
+	"desc": "SUCCESS",
+	"result": "tx hash"
+}
+
+</pre>
+
+=== DApp front end ===
+
+=====Wakeup Provider for login DApp =====
+
+1. wakeup Provider: send message for user signature
+
+
+
+2. Provider send message, publicKey and signature to callback url.
+
+
+
+=====Wakeup Provider for invoke smartcontract=====
+
+1. wakeup Provider: send dApp owner signed transaction
+
+
 
 then Provider post Address to DApp backend, DApp backend return  signedTx
 
@@ -210,36 +241,6 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 4. Provider send message, publicKey and signature to callback url.
 
 
-<pre>
-{
-	"action": "login",
-	"params": {
-		"type": "ontid or account",
-		"method": "post",
-		"dappName": "dapp Name",
-		"message": "HgigFdfwf",
-		"expired": "20181215152730",
-		"callback": "http://127.0.0.1:80/login/callback"
-	}
-}
-</pre>
-
-Provider response:
-
-<pre>
-{
-	"action": "login",
-	"params": {
-		"type": "ontid or account",
-		"publicKey": "",
-		"address": "",
-		"ontid": "",
-		"message": "HgigFdfwf",
-		"signature": ""
-	}
-}
-
-</pre>
 
 ====Scan transaction QrCode====
 
@@ -251,82 +252,24 @@ Provider response:
 
 4. send to blockchain
 
-if user has logined:
-<pre>
-{
-	"action": "invoke",
-	"params": {
-		"login": true,
-		"url": "http://127.0.0.1:80/rawtransaction/txhash",//optional: get signedTx from DApp backend
-		"message": "will pay 1 ONT in this transaction",//optional
-		"signedTx": "00d000000000000000000000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000004010b506172616d436f6e66696703312e300d4f6e746f6c6f6779205465616d0e636f6e74616374406f6e742e696f2b436861696e20476c6f62616c20456e7669726f6e6d656e74205661726961626c6573204d616e61676572200000"
-	}
-}
-</pre>
 
-only method and parameters, dont need signature, Provider help make transaction:
-<pre>
-{
-	"action": "invoke",
-	"params": {
-		"login": true,
-		"url": "http://127.0.0.1:80/rawtransaction/txhash",
-		"message": "will pay 1 ONT in this transaction",
-		"invokeConfig": {
-			"contractHash": "16edbe366d1337eb510c2ff61099424c94aeef02",
-			"functions": [{
-				"operation": "method name",
-				"args": [{
-					"name": "arg0-list",
-					"value": [true, 100, "Long:100000000000","Address:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ", "ByteArray:aabb", "String:hello", [true, 100], {
-						"key": 6
-					}]
-				}, {
-					"name": "arg1-map",
-					"value": {
-						"key": "String:hello",
-						"key1": "ByteArray:aabb",
-						"key2": "Long:100000000000",
-						"key3": true,
-						"key4": 100,
-						"key5": [100],
-						"key6": {
-							"key": 6
-						}
-					}
-				}, {
-					"name": "arg2-str",
-					"value": "String:test"
-				}]
-			}],
-			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-			"gasLimit": 20000,
-			"gasPrice": 500,
-			"signature": {
-				"m": 1,
-				"signers": ["AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
-			}
-		}
-	}
-}
-</pre>
 
-or
 
-if user didn't login:
 
-<pre>
-{
-	"action": "invoke",
-	"params": {
-		"login": false,
-		"method": "post",
-		"url": "http://127.0.0.1:80/login/callback"
-	}
-}
 
-</pre>
-then provider post Address to DApp backend, DApp backend return  signedTx
+====Open embedded H5 DApp====
+
+1. H5 DApp: send message for user signature
+
+
+
+2. Provider send message, publicKey and signature to H5 DApp.
+
+
+
+====H5 DApp invoke smartcontract====
+
+the message the same to Scan transaction QrCode
 
 
 ===Error code===
