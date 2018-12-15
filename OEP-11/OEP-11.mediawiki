@@ -17,6 +17,13 @@ dAPI currently only supports chrome extension and desktop, which cannot be used 
 
 ==Specification==
 
+The main interface of dApi mobile:
+
+* getAccount or getIdentity: DApp getAccount or getIdentity from Provider
+* Login: DApp send login message, Provider response Signed message.
+* Invoke smart contract: DApp send invoke request. Provider signature and send to MainNet.
+* Transfer ONT/ONG: the same to invoke smart contract.
+
 There are three Scenario will use H5 dApp login authorization and invoke smart contract request
 
 * Scenario 1: Web generate  QR code, Provider scans the QR code for login and invoke smart contract request.
@@ -28,37 +35,32 @@ There are three Scenario will use H5 dApp login authorization and invoke smart c
 
 === Flow of the Protocol===
 
-1. The Wallet App registers the intercept protocol in the Mobile
 
-The Wallet App first registers the intercept protocol (URL Scheme, appLink) in Mobile such that the H5 dapp can wakeup the Wallet App.
+The Provider registers the intercept protocol (URL Scheme, appLink) in Mobile for the H5 DApp can wakeup the Wallet App.
 
-DApp calls this protocol and send data to the Mobile Wallet App. The request format of data is structured as:
+DApp calls this protocol and send data to Provider. The request format of data is structured as:
 
 ontwallet://ont.io?param={the json data}
 
-2. getAccount or getIdentity
 
-DApp getAccount or getIdentity from Provider
 
-3. Login(getSignature)
+====  Flow of Login====
 
 
 [[Image:login.png|login]]
 
 
-4. Invoke smart contract
+====  Flow of Invoke Smart Contract ====
 
 
 [[Image:invoke.png|invoke]]
 
-5. Transfer ONT/ONG
 
-the some to invoke smart contract
 
 
 === Protocol data format ===
 
-====Login request and response====
+====Login====
 
 <pre>
 {
@@ -93,7 +95,7 @@ response:
 }
 </pre>
 
-====Invoke Smart Contract request and response====
+====Invoke Smart Contract====
 
 
 
@@ -257,7 +259,7 @@ Provider support receive wakeup form Dapp and scan QrCode of DApp website.
 
 
 
-====Open embedded H5 DApp====
+====H5 DApp login after be opened in Provider====
 
 1. H5 DApp: send message for user signature
 
