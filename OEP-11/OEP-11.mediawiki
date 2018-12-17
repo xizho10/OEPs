@@ -73,18 +73,18 @@ ontprovider://ont.io?param={the json data}
 
 === Protocol data format ===
 
-// request
+request message
 {
-    action	string       // action
+    action	string   // action
     version     string   // version
     params      object   // action parameter
 }
 
-// response
+response message
 {
     action	  string   // action
     version   string   // version
-	error     int      // error code
+    error     int      // error code
 	desc      string   // desc of error code
 	result    string   // result
 }
@@ -98,7 +98,7 @@ login params
     dappIcon    string   // dApp icon
     message     string   // message for signature
     expired     long    // QRcode expire time
-    post	    string   // callback method
+    post        string   // callback method
     callback	string   // callback url of dapp server
 }
 
