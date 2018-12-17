@@ -69,6 +69,7 @@ In Scenario 3: Provider open DApp. if DApp dont need user login:
 
 ====  Invoke Smart Contract ====
 
+Provider can add Provider owner signature for distinguish who send transaction.
 
 [[Image:invoke.png|invoke]]
 
