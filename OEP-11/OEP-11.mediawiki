@@ -96,6 +96,8 @@ response message
 
 ==== Get Account or Identity====
 
+Get Account or Identity from Provider
+
 <pre>
 {
 	"action": "getAccount",
