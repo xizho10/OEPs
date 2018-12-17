@@ -88,7 +88,7 @@ response message
     version   string   // version
     error     int      // error code
     desc      string   // desc of error code
-	result    string   // result
+    result    string   // result
 }
 </pre>
 
@@ -107,6 +107,8 @@ login params
     callback	string   // callback url of dapp server
 }
 </pre>
+
+request example:
 
 <pre>
 {
