@@ -53,7 +53,7 @@ The Provider registers the intercept protocol (URL Scheme, appLink) in Mobile fo
 
 DApp calls this protocol and send data to Provider. The request format of data is structured as:
 
-ontwallet://ont.io?param={the json data}
+ontprovider://ont.io?param={the json data}
 
 
 
