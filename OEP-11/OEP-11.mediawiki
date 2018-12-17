@@ -57,6 +57,8 @@ ontprovider://ont.io?param={the json data}
 
 ====  Get Account or Identity====
 
+In Scenario 3: Provider open DApp. if DApp dont need user login:
+
 [[Image:get-account-or-identity.png|get-account-or-identity]]
 
 ====  Login====
@@ -180,8 +182,7 @@ response:
 	"desc": "SUCCESS",
 	"result": {
 		"type": "ontid or account",
-		"address": "",
-		"ontid": "",
+		"user": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
 		"message": "HgigFdfwf",
 		"publicKey": "",
 		"signature": ""
