@@ -55,7 +55,9 @@ DApp calls this protocol and send data to Provider. The request format of data i
 
 ontprovider://ont.io?param={the json data}
 
+====  Get Account or Identity====
 
+[[Image:get-account-or-identity.png|get-account-or-identity]]
 
 ====  Login====
 
@@ -92,6 +94,35 @@ response message
 }
 </pre>
 
+==== Get Account or Identity====
+
+<pre>
+{
+	"action": "getAccount",
+	"version": "v1.0.0",
+	"params": {
+		"dappName": "dapp Name",
+		"dappIcon": "dapp Icon"
+	}
+}
+
+</pre>
+
+or
+
+<pre>
+{
+	"action": "getIdentity",
+	"version": "v1.0.0",
+	"params": {
+		"dappName": "dapp Name",
+		"dappIcon": "dapp Icon"
+	}
+}
+
+</pre>
+
+
 ====Login====
 
 login params
@@ -103,7 +134,6 @@ login params
     dappIcon    string   // dApp icon
     message     string   // message for signature
     expired     long    // QRcode expire time
-    post        string   // callback method
     callback	string   // callback url of dapp server
 }
 </pre>
@@ -120,7 +150,6 @@ request example:
 		"dappIcon": "dapp Icon",
 		"message": "HgigFdfwf",
 		"expired": "20181215152730", // QR Code expire time
-		"method": "post",
 		"callback": "http://127.0.0.1:80/login/callback"
 	}
 }
