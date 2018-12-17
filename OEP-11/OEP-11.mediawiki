@@ -82,8 +82,9 @@ ontwallet://ont.io?param={the json data}
 		"type": "ontid or account",
 		"method": "post",
 		"dappName": "dapp Name",
+		"dappIcon": "dapp Icon",
 		"message": "HgigFdfwf",
-		"expired": "20181215152730",
+		"expired": "20181215152730", // QR Code expire time
 		"callback": "http://127.0.0.1:80/login/callback"
 	}
 }
@@ -200,6 +201,52 @@ response:
 	"result": "tx hash"
 }
 
+</pre>
+
+====Transfer ONT/ONG====
+
+<pre>
+{
+	"action": "invoke",
+	"params": {
+    "invokeConfig": {
+			"contractHash": "0200000000000000000000000000000000000000",
+			"functions": [{
+				"operation": "transfer",
+				"args": [{
+					"name": "arg0-from",
+					"value": "Address:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
+				}, {
+					"name": "arg1-to",
+					"value": "Address:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"
+				}, {
+					"name": "arg2-amount",
+					"value": "Long:1000000000"
+				}]
+			}],
+			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
+			"gasLimit": 20000,
+			"gasPrice": 500,
+			"signature": [{
+				"m": 1,
+				"signers": ["AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
+			}]
+		}
+	}
+}
+
+</pre>
+
+response:
+
+<pre>
+{
+	"action": "nativeInvoke",
+	"error": 0,
+	"desc": "SUCCESS",
+	"result": {
+	}
+}
 </pre>
 
 === DApp front end ===
