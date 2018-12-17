@@ -74,24 +74,29 @@ ontprovider://ont.io?param={the json data}
 === Protocol data format ===
 
 request message
+<pre>
 {
     action	string   // action
     version     string   // version
     params      object   // action parameter
 }
-
+</pre>
 response message
+<pre>
 {
-    action	  string   // action
+    action    string   // action
     version   string   // version
     error     int      // error code
-	desc      string   // desc of error code
+    desc      string   // desc of error code
 	result    string   // result
 }
+</pre>
 
 ====Login====
 
 login params
+
+<pre>
 {
     type        string  // ontid or account
     dappName    string   // dApp name
@@ -101,6 +106,7 @@ login params
     post        string   // callback method
     callback	string   // callback url of dapp server
 }
+</pre>
 
 <pre>
 {
