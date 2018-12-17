@@ -182,7 +182,7 @@ response:
 	"desc": "SUCCESS",
 	"result": {
 		"type": "ontid or account",
-		"user": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
+		"user": "did:ont:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
 		"message": "HgigFdfwf",
 		"publicKey": "",
 		"signature": ""
