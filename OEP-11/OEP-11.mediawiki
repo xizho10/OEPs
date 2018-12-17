@@ -73,18 +73,46 @@ ontprovider://ont.io?param={the json data}
 
 === Protocol data format ===
 
+// request
+{
+    action	string       // action
+    version     string   // version
+    params      object   // action parameter
+}
+
+// response
+{
+    action	  string   // action
+    version   string   // version
+	error     int      // error code
+	desc      string   // desc of error code
+	result    string   // result
+}
+
 ====Login====
+
+login params
+{
+    type        string  // ontid or account
+    dappName    string   // dApp name
+    dappIcon    string   // dApp icon
+    message     string   // message for signature
+    expired     long    // QRcode expire time
+    post	    string   // callback method
+    callback	string   // callback url of dapp server
+}
 
 <pre>
 {
 	"action": "login",
+	"version": "v1.0.0",
 	"params": {
 		"type": "ontid or account",
-		"method": "post",
 		"dappName": "dapp Name",
 		"dappIcon": "dapp Icon",
 		"message": "HgigFdfwf",
 		"expired": "20181215152730", // QR Code expire time
+		"method": "post",
 		"callback": "http://127.0.0.1:80/login/callback"
 	}
 }
@@ -96,6 +124,7 @@ response:
 <pre>
 {
 	"action": "login",
+	"version": "v1.0.0",
 	"error": 0,
 	"desc": "SUCCESS",
 	"result": {
@@ -111,13 +140,20 @@ response:
 
 ====Invoke Smart Contract====
 
-
+Invoke Smart Contract params
+{
+    login         bool    // logined or not
+    message      string   // message show in Provider, optional
+    invokeConfig  long    // invoke config parameter
+    signedTx	  string   // if use invokeConfig, dont need signedTx
+}
 
 if user has logined.
 
 <pre>
 {
 	"action": "invoke",
+	"version": "v1.0.0",
 	"params": {
 		"login": true,
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",//optional: get signedTx from DApp backend
@@ -131,6 +167,7 @@ only method and parameters, dont need signature, Provider help make transaction:
 <pre>
 {
 	"action": "invoke",
+	"version": "v1.0.0",
 	"params": {
 		"login": true,
 		"url": "http://127.0.0.1:80/rawtransaction/txhash",
@@ -181,6 +218,7 @@ if user didn't login:
 <pre>
 {
 	"action": "invoke",
+	"version": "v1.0.0",
 	"params": {
 		"login": false,
 		"method": "post",
@@ -196,6 +234,7 @@ response:
 <pre>
 {
 	"action": "invoke",
+	"version": "v1.0.0",
 	"error": 0,
 	"desc": "SUCCESS",
 	"result": "tx hash"
@@ -208,6 +247,7 @@ response:
 <pre>
 {
 	"action": "invoke",
+	"version": "v1.0.0",
 	"params": {
     "invokeConfig": {
 			"contractHash": "0200000000000000000000000000000000000000",
@@ -241,7 +281,8 @@ response:
 
 <pre>
 {
-	"action": "nativeInvoke",
+	"action": "invoke",
+	"version": "v1.0.0",
 	"error": 0,
 	"desc": "SUCCESS",
 	"result": {
