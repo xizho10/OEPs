@@ -42,7 +42,7 @@ The main interface of dApi mobile:
 * Login: DApp send login message, Provider response Signed message.
 * Invoke smart contract: DApp send invoke request. Provider signature and send to MainNet.
 * Transfer ONT/ONG: the same to invoke smart contract.
-
+* Ontid: registry or update attribute.
 
 
 
@@ -125,6 +125,18 @@ or
 </pre>
 
 
+response:
+
+<pre>
+{
+	"action": "getAccount",
+	"version": "v1.0.0",
+	"error": 0,
+	"desc": "SUCCESS",
+	"result": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"
+}
+</pre>
+
 ====Login====
 
 login params
@@ -168,10 +180,10 @@ response:
 	"desc": "SUCCESS",
 	"result": {
 		"type": "ontid or account",
-		"publicKey": "",
 		"address": "",
 		"ontid": "",
 		"message": "HgigFdfwf",
+		"publicKey": "",
 		"signature": ""
 	}
 }
@@ -287,7 +299,7 @@ response:
 {
 	"action": "invoke",
 	"version": "v1.0.0",
-	"params": {
+    "params": {
     "invokeConfig": {
 			"contractHash": "0200000000000000000000000000000000000000",
 			"functions": [{
@@ -301,6 +313,52 @@ response:
 				}, {
 					"name": "arg2-amount",
 					"value": "Long:1000000000"
+				}]
+			}],
+			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
+			"gasLimit": 20000,
+			"gasPrice": 500,
+			"signature": [{
+				"m": 1,
+				"signers": ["AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
+			}]
+		}
+	}
+}
+
+</pre>
+
+response:
+
+<pre>
+{
+	"action": "invoke",
+	"version": "v1.0.0",
+	"error": 0,
+	"desc": "SUCCESS",
+	"result": {
+	}
+}
+</pre>
+
+
+====Ontid registry====
+
+<pre>
+{
+	"action": "invoke",
+	"version": "v1.0.0",
+    "params": {
+    "invokeConfig": {
+			"contractHash": "0300000000000000000000000000000000000000",
+			"functions": [{
+				"operation": "regIDWithPublicKey",
+				"args": [{
+					"name": "arg0-ontid",
+					"value": "String:did:ont:AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
+				}, {
+					"name": "arg1-publickey",
+					"value": "ByteArray:03f631f975560afc7bf47902064838826ec67794ddcdbcc6f0a9c7b91fc8502583"
 				}]
 			}],
 			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
