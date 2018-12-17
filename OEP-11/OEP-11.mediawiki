@@ -165,10 +165,10 @@ only method and parameters, dont need signature, Provider help make transaction:
 			"payer": "AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
 			"gasLimit": 20000,
 			"gasPrice": 500,
-			"signature": {
+			"signature": [{
 				"m": 1,
 				"signers": ["AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ"]
-			}
+			}]
 		}
 	}
 }
