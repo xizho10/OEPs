@@ -571,14 +571,20 @@ response:
 ===Invoke code example===
 
 Android: [[GameWebActivity.java]]
+Ios:  [[DAppViewController.m]]
+
+===Scenario Example===
 
 
-===example===
 
-==== Split login and invoke smart contract ====
+==== Scenario 1 and 2: Split login and invoke smart contract ====
 
 [[Image:split-login-invoke.png|split-login-invoke]]
 
-==== Invoke smart contract with login ====
+==== Scenario 1 and 2: Invoke smart contract with login ====
 
 [[Image:invoke-with-login.png|invoke-with-login]]
+
+==== Scenario 3 ====
+
+[[Image:scenario3.png|scenario3]]
