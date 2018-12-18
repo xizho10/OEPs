@@ -517,7 +517,7 @@ response example:
 ==Implementation==
 Example implementations are available:
 
-Login example:
+===Login code example===
 <pre>
 
 // signature message
@@ -568,9 +568,12 @@ response:
 }
 </pre>
 
-Invoke example：
+===Invoke code example===
 
 Android: [[GameWebActivity.java]]
+
+
+===example===
 
 ==== Split login and invoke smart contract ====
 
