@@ -543,7 +543,7 @@ System.out.println(acct0.getAddressU160().toBase58());
 
 Invoke example：
 
-[[Android: GameWebActivity.java]]
+Android: [[GameWebActivity.java]]
 
 ==== Split login and invoke smart contract ====
 
