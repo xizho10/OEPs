@@ -517,10 +517,32 @@ response example:
 ==Implementation==
 Example implementations are available:
 
+Login example:
+<pre>
+
+// signature message
+
+String prikey = "0fdbd5d046997da9959b1931c727c96d83dff19e8ec0244952c1e72d1cdb5bf4";
+com.github.ontio.account.Account acct0 = new com.github.ontio.account.Account(Helper.hexToBytes(prikey), ontSdk.defaultSignScheme);
+String message = "helloworld";
+byte[] sign = acct0.generateSignature(message.getBytes(), SignatureScheme.SHA256WITHECDSA,null);
+String signature = Helper.toHexString(sign);
+System.out.println(signature);
+String publicKey = Helper.toHexString(acct0.serializePublicKey());
+System.out.println(publicKey);
 
 
+// verify message signature
+com.github.ontio.account.Account acct1 = new com.github.ontio.account.Account(false, Helper.hexToBytes(publicKey));
+boolean b = acct1.verifySignature(message.getBytes(),Helper.hexToBytes(signature));
+System.out.println(b);
+String address = Address.addressFromPubKey(publicKey).toBase58();
+System.out.println(acct0.getAddressU160().toBase58());
 
+</pre>
 
+Invoke example：
+[[GameWebActivity.java]]
 
 ==== Split login and invoke smart contract ====
 
