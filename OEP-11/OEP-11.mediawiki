@@ -568,7 +568,7 @@ response:
 }
 </pre>
 
-===Invoke code example===
+===Provider code example===
 
 Android: [[GameWebActivity.java]]
 Ios:  [[DAppViewController.m]]
