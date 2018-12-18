@@ -541,6 +541,33 @@ System.out.println(acct0.getAddressU160().toBase58());
 
 </pre>
 
+
+callback  test: POST   http://101.132.193.149:4027/blockchain/v1/common/test-onto-login
+<pre>
+{
+	"action": "login",
+	"params": {
+		"type": "account",
+		"user": "AazEvfQPcQ2GEFFPLF1ZLwQ7K5jDn81hve",
+		"message": "1122334",
+		"publickey": "035384561673e76c7e3003e705e4aa7aee67714c8b68d62dd1fb3221f48c5d3da0",
+		"signature": "01ed0ee7d21dd1020eaae497e0ef9bc18174234e2917e78ec3fae056fd6e2ab166d87235eac2b8ec1062fd4b6f7d9b2a8c5ceb635483959182259a20bf99e5cad6"
+	}
+}
+</pre>
+
+response:
+
+<pre>
+{
+    "action": "login",
+    "error": 0,
+    "desc": "SUCCESS",
+    "result": true,
+    "version": "v1.0.0"
+}
+</pre>
+
 Invoke example：
 
 Android: [[GameWebActivity.java]]

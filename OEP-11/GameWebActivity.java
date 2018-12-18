@@ -15,15 +15,18 @@
 
 package com.github.ontio.onto.asset;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JsPromptResult;
@@ -37,8 +40,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.ontio.onto.BaseActivity;
 import com.github.ontio.onto.R;
@@ -52,6 +57,8 @@ import com.github.ontio.onto.view.GetOngDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,7 +91,7 @@ public class GameWebActivity extends BaseActivity {
         frameLayout.addView(mWebView);
         initWebView();
 
-        mWebView.loadUrl("http://192.168.50.130:8080/");
+        mWebView.loadUrl("http://192.168.3.31:8080/");
 
     }
 
@@ -99,18 +106,31 @@ public class GameWebActivity extends BaseActivity {
         final WebSettings webSetting = mWebView.getSettings();
         webSetting.setUseWideViewPort(true);
         webSetting.setLoadWithOverviewMode(true);
-
         webSetting.setJavaScriptEnabled(true);
+        // 应用可以有缓存
+//        String appCacheDir = this.getApplicationContext().getDir("cache", Context.MODE_PRIVATE).getPath();
+//        webSetting.setUseWideViewPort(true);
+//        webSetting.setAppCacheEnabled(false);
+//        webSetting.setLoadWithOverviewMode(true);
+//        webSetting.setAppCachePath(appCacheDir);
+//        webSetting.setAppCacheMaxSize(1024 * 1024 * 8);
+
         webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSetting.setAllowFileAccess(false);
         webSetting.setAllowFileAccessFromFileURLs(false);
+
         webSetting.setAllowContentAccess(false);
         webSetting.setDomStorageEnabled(true);
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
-                String[] split = message.split("=");
-                handleAction(split[split.length - 1]);
+//                message:  ontprovider://ont.io?params={the json data}
+                String[] strList = message.split("params=");
+                byte[] decode = Base64.decode(strList[strList.length - 1], Base64.NO_WRAP);
+                String request = Uri.decode(new String(decode));
+                handleAction(request);
+
+                //关掉webview弹窗
                 if (result != null) {
                     result.confirm("");
                 }
@@ -192,13 +212,8 @@ public class GameWebActivity extends BaseActivity {
         });
 
     }
-    //1. Base64.decode   2. Uri.decode
-    private void handleAction(String message) {
 
-        byte[] decode = Base64.decode(message, Base64.NO_WRAP);
-        String result = Uri.decode(new String(decode));
-//        {"action":"login","params":{"type":"account","dappName":"My dapp","message":"test message","expired":"201812181000","callback":""}}
-        LogUtils.LogI(TAG, "deal: " + result);
+    private void handleAction(String result) {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(result);
@@ -206,6 +221,7 @@ public class GameWebActivity extends BaseActivity {
             switch (action) {
                 case "login":
                 case "invoke":
+                    //处理login和invoke，需要输入密码
                     showDialog(result);
                     break;
                 case "getAccount":
@@ -229,11 +245,11 @@ public class GameWebActivity extends BaseActivity {
 //        }
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("action",reqJson.getString("action"));
-            jsonObject.put("version",reqJson.getString("version"));
-            jsonObject.put("error",0);
-            jsonObject.put("desc","Success");
-            jsonObject.put("result",SettingSingleton.getInstance().getDefaultAddress());
+            jsonObject.put("action", reqJson.getString("action"));
+            jsonObject.put("version", reqJson.getString("version"));
+            jsonObject.put("error", 0);
+            jsonObject.put("desc", "");
+            jsonObject.put("result", SettingSingleton.getInstance().getDefaultAddress());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -243,7 +259,6 @@ public class GameWebActivity extends BaseActivity {
 
     private GetOngDialog getOngDialog;
 
-    //显示付款
     private void showDialog(final String message) {
         if (getOngDialog != null && getOngDialog.isShowing()) {
             getOngDialog.dismiss();
@@ -260,10 +275,10 @@ public class GameWebActivity extends BaseActivity {
                     String action = jsonObject.getString("action");
                     switch (action) {
                         case "login":
-                            reqLogin(jsonObject.getJSONObject("params").getString("message"), password);
+                            handleLogin(jsonObject.getJSONObject("params").getString("message"), password);
                             break;
                         case "invoke":
-                            reqTran(message, password);
+                            handleInvokeTransaction(message, password);
                             break;
                         default:
                     }
@@ -276,13 +291,15 @@ public class GameWebActivity extends BaseActivity {
         getOngDialog.show();
     }
 
-    private void reqTran(String data, String password) {
-
+    private void handleInvokeTransaction(String data, String password) {
         SDKWrapper.getSendAddress(new SDKCallback() {
             @Override
             public void onSDKSuccess(String tag, Object message) {
                 dismissLoading();
-                showAttention((String) message);
+                ArrayList<String> result = (ArrayList<String>) message;
+                if (result != null && result.size() > 1) {
+                    showChooseDialog((String) result.get(0), (String) result.get(1));
+                }
             }
 
             @Override
@@ -293,7 +310,71 @@ public class GameWebActivity extends BaseActivity {
         }, TAG, data, password, SettingSingleton.getInstance().getDefaultAddress());
     }
 
-    private void reqLogin(String data, String password) {
+    private Dialog chooseDialog;
+
+    private void showChooseDialog(String showMessage, final String transactionHex) {
+        chooseDialog = new Dialog(this, R.style.dialog);
+        View inflate = LayoutInflater.from(this).inflate(R.layout.dialog_choose, null);
+        TextView tvContent = (TextView) inflate.findViewById(R.id.tv_content);
+        com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(showMessage);
+        String sendAddress = jsonObject.getJSONArray("Notify").getJSONObject(0).getJSONArray("States").getString(2);
+        tvContent.setText("Send To :" + sendAddress);
+        TextView tvSure = (TextView) inflate.findViewById(R.id.tv_sure);
+        TextView tvCancel = (TextView) inflate.findViewById(R.id.tv_cancel);
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (chooseDialog != null) {
+                    chooseDialog.dismiss();
+                }
+            }
+        });
+        tvSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (chooseDialog != null) {
+                    chooseDialog.dismiss();
+                }
+                showLoading();
+                SDKWrapper.sendTransactionHex(new SDKCallback() {
+                    @Override
+                    public void onSDKSuccess(String tag, Object message) {
+                        dismissLoading();
+                        String txHash = (String) message;
+                        if (!TextUtils.isEmpty(txHash)) {
+                            ToastUtil.showToast(GameWebActivity.this, R.string.success);
+                            JSONObject jsonObject = new JSONObject();
+                            try {
+                                jsonObject.put("action", "invoke");
+                                jsonObject.put("version", "v1.0.0");
+                                jsonObject.put("error", 0);
+                                jsonObject.put("desc", "SUCCESS");
+                                jsonObject.put("result", txHash);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            String s = Base64.encodeToString(Uri.encode(jsonObject.toString()).getBytes(), Base64.NO_WRAP);
+                            mWebView.loadUrl("javascript:emitMessage(\"" + s + "\")");
+                        } else {
+                            ToastUtil.showToast(GameWebActivity.this, R.string.fail);
+                        }
+                    }
+
+                    @Override
+                    public void onSDKFail(String tag, String message) {
+                        dismissLoading();
+                        ToastUtil.showToast(GameWebActivity.this, getString(R.string.fail) + " : " + message);
+                    }
+                }, TAG, transactionHex);
+            }
+        });
+        chooseDialog.setContentView(inflate);
+        if (chooseDialog != null && !chooseDialog.isShowing()) {
+            chooseDialog.show();
+        }
+    }
+
+    private void handleLogin(String data, String password) {
         SDKWrapper.getGameLogin(new SDKCallback() {
             @Override
             public void onSDKSuccess(String tag, Object message) {
